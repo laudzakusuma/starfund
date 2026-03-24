@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarFund — Decentralized Crowdfunding on Stellar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="starfield"></canvas>
+  <nav class="nav">
+    <div class="nav-brand">
+      <span class="brand-name">StarFund</span>
+      <span class="brand-tag">Testnet</span>
+    </div>
+    <div class="nav-actions">
+      <span id="wallet-address" class="wallet-pill hidden"></span>
+      <button id="connect-btn" class="btn btn-primary" onclick="connectWallet()">
+        Connect Freighter
+      </button>
+      <button id="disconnect-btn" class="btn btn-ghost hidden" onclick="disconnectWallet()">
+        Disconnect
+      </button>
+    </div>
+  </nav>
+  <header class="hero">
+    <div class="hero-eyebrow">Built on Stellar · Soroban Smart Contracts</div>
+    <h1 class="hero-title">Fund Ideas,<br/><em>On-Chain.</em></h1>
+    <p class="hero-sub">
+      A decentralized micro-crowdfunding platform where dreams get funded in XLM.
+      No middlemen. No borders. Just Stellar.
+    </p>
+    <div class="hero-cta">
+      <button class="btn btn-primary btn-lg" onclick="openModal('create-modal')">
+        Start a Campaign
+      </button>
+      <button class="btn btn-ghost btn-lg" onclick="scrollToCampaigns()">
+        Explore Campaigns ↓
+      </button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span id="stat-campaigns">0</span><label>Campaigns</label></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span id="stat-raised">0 XLM</span><label>Total Raised</label></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span>Testnet</span><label>Network</label></div>
+    </div>
+  </header>
+  <main class="main" id="campaigns-section">
+    <div class="section-header">
+      <h2 class="section-title">Active Campaigns</h2>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="funded">Funded</button>
+      </div>
+    </div>
+    <div id="campaigns-grid" class="campaigns-grid">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading campaigns from Stellar Testnet…</p>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <p>StarFund · Built with love for Stellar Workshop Jakarta 2025</p>
+    <p class="footer-links">
+      <a href="https://github.com/your-username/starfund" target="_blank">GitHub</a> ·
+      <a href="https://stellar.expert/explorer/testnet" target="_blank">Testnet Explorer</a> ·
+      <a href="https://soroban.stellar.org" target="_blank">Soroban Docs</a>
+    </p>
+  </footer>
+  <div id="create-modal" class="modal-overlay hidden" onclick="closeModalOutside(event, 'create-modal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('create-modal')">✕</button>
+      <h2 class="modal-title">✦ New Campaign</h2>
+      <p class="modal-sub">Launch your idea to the Stellar community</p>
+
+      <div class="form-group">
+        <label>Campaign Title</label>
+        <input id="camp-title" type="text" class="form-input" placeholder="e.g. Open Source Stellar Wallet" maxlength="60" />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="camp-desc" class="form-input form-textarea" placeholder="Describe your project, its impact, and how funds will be used…" maxlength="280"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Funding Goal (XLM)</label>
+          <input id="camp-goal" type="number" class="form-input" placeholder="100" min="1" />
+        </div>
+        <div class="form-group">
+          <label>Duration (days)</label>
+          <input id="camp-duration" type="number" class="form-input" placeholder="30" min="1" max="90" />
+        </div>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="createCampaign()">
+        Launch Campaign
+      </button>
+    </div>
+  </div>
+  <div id="contribute-modal" class="modal-overlay hidden" onclick="closeModalOutside(event, 'contribute-modal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('contribute-modal')">✕</button>
+      <h2 class="modal-title" id="contrib-campaign-title">Fund Campaign</h2>
+      <div class="campaign-preview" id="contrib-preview"></div>
+      <div class="form-group">
+        <label>Amount (XLM)</label>
+        <input id="contrib-amount" type="number" class="form-input" placeholder="10" min="1" />
+        <span class="form-hint">Minimum: 1 XLM · Testnet XLM only</span>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="contribute()">
+        Contribute XLM
+      </button>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/12.3.0/stellar-sdk.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

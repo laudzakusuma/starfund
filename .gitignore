@@ -1,0 +1,20 @@
+# Rust
+target/
+Cargo.lock
+
+# Deployment artifacts (keep deployment.json for reference)
+# frontend/deployment.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Secrets — NEVER commit private keys
+*.secret
+*.pem
+identity/

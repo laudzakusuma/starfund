@@ -1,0 +1,6 @@
+[workspace]
+resolver = "2"
+members = ["contracts/starfund"]
+
+[workspace.dependencies]
+soroban-sdk = { version = "21.0.0" }

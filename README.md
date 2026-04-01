@@ -1,4 +1,4 @@
-# StarFund — Decentralized Micro-Crowdfunding on Stellar
+# ✦ StarFund — Decentralized Micro-Crowdfunding on Stellar
 
 > **Build On Stellar Workshop · Jakarta 2025**  
 > A unique dApp for funding ideas on-chain — no middlemen, no borders, just Stellar.
@@ -9,7 +9,7 @@
 
 ---
 
-## Overview
+## 📖 Overview
 
 **StarFund** is a decentralized crowdfunding platform built on the Stellar blockchain using [Soroban](https://soroban.stellar.org/) smart contracts. Anyone can launch a campaign to raise XLM for their project, and the community can contribute directly from their Stellar wallet — all governed by transparent, immutable smart contract logic.
 
@@ -25,7 +25,7 @@
 
 ---
 
-## Features
+## 🌟 Features
 
 - **Create Campaigns** — Set a title, description, XLM goal, and duration (1–90 days)
 - **Contribute XLM** — Fund any campaign directly from Freighter wallet
@@ -37,7 +37,7 @@
 
 ---
 
-## Tech Stack
+## 🛠 Tech Stack
 
 | Layer | Technology |
 |-------|------------|
@@ -50,7 +50,7 @@
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 starfund/
@@ -72,16 +72,20 @@ starfund/
 
 ---
 
-## Setup & Installation
+## 🚀 Setup & Installation
 
 ### Prerequisites
 
 Make sure you have the following installed:
 
 ```bash
-# 1. Rust with WASM target
+# 1. Rust with WASM targets
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# stellar-cli v21+ uses wasm32v1-none; older versions use wasm32-unknown-unknown
+# Install BOTH to avoid target errors:
 rustup target add wasm32-unknown-unknown
+rustup target add wasm32v1-none
 
 # 2. Stellar CLI
 cargo install --locked stellar-cli --features opt
@@ -92,7 +96,7 @@ cargo install --locked stellar-cli --features opt
 
 ---
 
-## Build the Smart Contract
+## 🔨 Build the Smart Contract
 
 ```bash
 # Clone the repository
@@ -108,7 +112,7 @@ stellar contract build
 
 ---
 
-## Deploy to Stellar Testnet
+## 🌐 Deploy to Stellar Testnet
 
 ```bash
 # Make the deploy script executable
@@ -129,14 +133,14 @@ After deployment, update `CONFIG.contractId` in `frontend/app.js`:
 
 ```javascript
 const CONFIG = {
-  contractId: "CXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  contractId: "CDT46NXHKKAURLBC4VUNRYT4EFFHZBDQN6YR6H2MRZ6P5KIFJ3IE6KZM",
   // ...
 };
 ```
 
 ---
 
-## Run the Frontend
+## 💻 Run the Frontend
 
 Since this is a static frontend (HTML + CSS + JS), just open it in your browser:
 
@@ -154,7 +158,7 @@ python3 -m http.server 3000
 
 ---
 
-## Usage Guide
+## 🎮 Usage Guide
 
 ### 1. Connect Wallet
 - Install [Freighter](https://freighter.app) and set network to **Testnet**
@@ -162,14 +166,14 @@ python3 -m http.server 3000
 - Click **"Connect Freighter"** in the top-right corner
 
 ### 2. Create a Campaign
-- Click **"Start a Campaign"**
+- Click **"✦ Start a Campaign"**
 - Fill in the title, description, goal (XLM), and duration
 - Sign the transaction in Freighter
 - Your campaign appears live on the grid!
 
 ### 3. Fund a Campaign
 - Browse active campaigns
-- Click **"Fund"** on any campaign you'd like to support
+- Click **"✦ Fund"** on any campaign you'd like to support
 - Enter the amount (minimum 1 XLM) and sign
 
 ### 4. Withdraw Funds (Campaign Creator)
@@ -182,7 +186,7 @@ python3 -m http.server 3000
 
 ---
 
-## Smart Contract API
+## 📜 Smart Contract API
 
 | Function | Description | Auth Required |
 |----------|-------------|---------------|
@@ -197,20 +201,20 @@ python3 -m http.server 3000
 
 ---
 
-## Testing on Testnet
+## 🧪 Testing on Testnet
 
 1. Get testnet XLM:  
    `https://friendbot.stellar.org?addr=YOUR_STELLAR_ADDRESS`
 
 2. Check your contract on the explorer:  
-   `https://stellar.expert/explorer/testnet/contract/YOUR_CONTRACT_ID`
+   `https://stellar.expert/explorer/testnet/contract/CDT46NXHKKAURLBC4VUNRYT4EFFHZBDQN6YR6H2MRZ6P5KIFJ3IE6KZM`
 
 3. Inspect transactions:  
    `https://horizon-testnet.stellar.org/transactions`
 
 ---
 
-## Security Considerations
+## 🔒 Security Considerations
 
 - All fund transfers go through the Soroban smart contract — no admin keys
 - Contributions are refundable if campaign fails to meet its goal
@@ -219,7 +223,7 @@ python3 -m http.server 3000
 
 ---
 
-## Roadmap
+## 🗺 Roadmap
 
 - [ ] Campaign categories & tags
 - [ ] NFT reward tiers for contributors  
@@ -229,7 +233,7 @@ python3 -m http.server 3000
 
 ---
 
-## Contributing
+## 👥 Contributing
 
 Pull requests are welcome! For major changes, please open an issue first.
 
@@ -241,13 +245,13 @@ git push origin feature/your-feature
 
 ---
 
-## License
+## 📄 License
 
 MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
 - [Stellar Development Foundation](https://stellar.org) for Soroban
 - [Freighter](https://freighter.app) for the wallet SDK
@@ -255,4 +259,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
-> *Built with LOVE on Stellar · Jakarta, Indonesia 🇮🇩*
+> *Built with ♥ on Stellar · Jakarta, Indonesia 🇮🇩*

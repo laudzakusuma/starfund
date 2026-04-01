@@ -4,7 +4,7 @@ const CONFIG = {
   rpcUrl:            "https://soroban-testnet.stellar.org",
   horizonUrl:        "https://horizon-testnet.stellar.org",
   // ▼ Replace with your deployed contract ID after running scripts/deploy.sh
-  contractId:        "YOUR_CONTRACT_ID_HERE",
+  contractId:        "CDT46NXHKKAURLBC4VUNRYT4EFFHZBDQN6YR6H2MRZ6P5KIFJ3IE6KZM",
   // Native XLM token on testnet
   xlmToken:          "CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC",
 };
